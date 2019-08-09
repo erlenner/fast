@@ -1,10 +1,10 @@
 #ifndef FAST_CORNER_UTILITIES_H
 #define FAST_CORNER_UTILITIES_H
 
-#if __ARM_NEON__
-#include <arm_neon.h>
-#elif __SSE2__
+#if __SSE2__
 #include <emmintrin.h>
+#else
+#include "sse2neon.h"
 #endif
 
 namespace fast
@@ -40,7 +40,7 @@ struct Greater
    }
 };
 
-#if __SSE2__
+//#if __SSE2__
 
 #define CHECK_BARRIER(lo, hi, other, flags)       \
   {                 \
@@ -55,7 +55,7 @@ struct Greater
   template <bool Aligned> inline __m128i load_si128(const void* addr) { return _mm_loadu_si128((const __m128i*)addr); }
   template <> inline __m128i load_si128<true>(const void* addr) { return _mm_load_si128((const __m128i*)addr); }
 
-#endif
+//#endif
 
 } // namespace fast
 

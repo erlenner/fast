@@ -5,7 +5,8 @@
 #include <list>
 
 #ifndef __SSE2__
-#  error "This file requires SSE2 support. Check your compiler flags."
+//#  error "This file requires SSE2 support. Check your compiler flags."
+#include "sse2neon.h"
 #else
 #  include <emmintrin.h>
 #endif
