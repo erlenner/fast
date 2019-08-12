@@ -16,6 +16,15 @@ struct fast_xy
 
 typedef unsigned char fast_byte;
 
+/// SSE2 optimized version of the corner 9
+void fast_corner_detect_9_sse2(const fast_byte* img, int imgWidth, int imgHeight, int widthStep, short barrier, vector<fast_xy>& corners);      
+
+/// plain C++ version of the corner 9
+void fast_corner_detect_9(const fast_byte* img, int imgWidth, int imgHeight, int widthStep, short barrier, vector<fast_xy>& corners); 
+
+/// corner score 9
+void fast_corner_score_9(const fast_byte* img, const int img_stride, const vector<fast_xy>& corners, const int threshold, vector<int>& scores);
+
 /// SSE2 optimized version of the corner 10
 void fast_corner_detect_10_sse2(const fast_byte* img, int imgWidth, int imgHeight, int widthStep, short barrier, vector<fast_xy>& corners);      
 
